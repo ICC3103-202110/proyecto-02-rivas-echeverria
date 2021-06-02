@@ -1,4 +1,4 @@
-const {inputValues} = require('./view')
+const {inputAnswer, inputAction} = require('./view')
 const {printTable} = require('console-table-printer')
 
 async function app(state, True, view){
@@ -8,6 +8,8 @@ async function app(state, True, view){
         console.clear()
         console.log(tittle)
         printTable(table)
+        const action = await inputAction(model)
+        const answer = await inputAnswer(action['action'], model)
     //}
 }
 module.exports = {

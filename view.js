@@ -15,12 +15,12 @@ function getTitle(){
 }
 
 function getTable(model){
-    const {name} = model
+    const {cities} = model
     const {temp} = model
     const {max} = model
     const {min} = model
     return [
-        {'name': name,
+        {'name': cities,
         'temp': temp,
         'max': max,
         'min': min
@@ -28,12 +28,55 @@ function getTable(model){
     ]
 }
 
-function inputValues(model){
-    const {name} = model
+function inputAction(model){
+    message = 'Select action:'
+    const choices = ['Add city', 'Update City', 'Delete City']
+    return inquirer.prompt([
+        {
+            name: 'action',
+            type: 'list',
+            message: message,
+            choices: choices
+        }
+    ])
+}
+
+function inputAnswer(action, model){
+    const {cities} = model
     const {temp} = model
     const {max} = model
     const {min} = model
-    return inquirer.prompt([])
+    if(action === 'Add City'){
+        return inquirer.prompt([
+            {
+                name: 'addCity',
+                type: 'input',
+                message: 'Location?'
+            }
+        ])
+    }
+    
+    if(action === 'Update City'){
+        return inquirer.prompt([
+            {
+                name: 'updateCity',
+                type: 'list',
+                message: 'Update City',
+                choices: cities
+            }
+        ])
+    }
+
+    if(action === 'Delete City'){
+        return inquirer.prompt([
+            {
+                name: 'deleteCity',
+                type: 'list',
+                message: 'Delete City:',
+                choices: cities
+            }
+        ])
+    }
 }
 
 function view(model){
@@ -45,5 +88,6 @@ function view(model){
 
 module.exports = {
     view,
-    inputValues
+    inputAction,
+    inputAnswer
 }
