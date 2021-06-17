@@ -15,17 +15,27 @@ function getTitle(){
 }
 
 function getTable(model){
+    
+    const TableList=[]
     const {cities} = model
     const {temp} = model
     const {max} = model
     const {min} = model
-    return [
-        {'name': cities,
-        'temp': temp,
-        'max': max,
-        'min': min
+
+
+    for (var l=0;l < Object.keys(model).length ;l++){
+        var a = {
+            cities: model[l].cities ,
+            temp:model[l].temp,
+            max: model[l].max,
+            min:model[l].min            
         }
-    ]
+        TableList.push(a)
+    }
+
+    console.log(TableList)
+    return TableList
+
 }
 
 function inputAction(model){
@@ -78,6 +88,14 @@ function inputAnswer(action, model){
         ])
     }
 }
+function NameCity (){
+    return inquirer.prompt([
+        {
+            name: 'nameCity',
+            type: 'input',
+            message: 'Name of the city: '
+            
+}])}
 
 function view(model){
     return {
@@ -89,5 +107,6 @@ function view(model){
 module.exports = {
     view,
     inputAction,
-    inputAnswer
+    inputAnswer,
+    NameCity
 }

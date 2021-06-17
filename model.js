@@ -1,6 +1,6 @@
 initModel = {
-    cities: ["Santiago,CL"],
-    temp: 19.98,
+    cities: 'no city' ,
+    temp: 0,
     max: 23.33,
     min: 17
 }

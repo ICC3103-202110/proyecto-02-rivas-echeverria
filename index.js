@@ -1,7 +1,7 @@
 const {initModel} = require('./model')
 const {app} = require('./app')
 const {view} = require('./view')
-//const {update} = require('./update')
+//const {ModelUpdate} = require('./update')
 
 const state = {
     model: initModel,
@@ -9,3 +9,4 @@ const state = {
 }
 
 app(state, true, view)
+
