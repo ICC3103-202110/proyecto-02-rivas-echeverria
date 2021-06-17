@@ -30,6 +30,7 @@ function getTable(model){
             max: model[l].max,
             min:model[l].min            
         }
+        
         TableList.push(a)
     }
 
@@ -95,6 +96,19 @@ function NameCity (){
             type: 'input',
             message: 'Name of the city: '
             
+            
+}])}
+
+function SelectCity (){
+    const {cities}=model
+    return inquirer.prompt([
+        {
+            name: 'selectCity',
+            type: 'list',
+            message: 'Update city: ',
+            choices: cities
+            
+            
 }])}
 
 function view(model){
@@ -108,5 +122,6 @@ module.exports = {
     view,
     inputAction,
     inputAnswer,
-    NameCity
+    NameCity,
+    SelectCity
 }
