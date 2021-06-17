@@ -52,43 +52,6 @@ function inputAction(model){
     ])
 }
 
-function inputAnswer(action, model){
-    const {cities} = model
-    const {temp} = model
-    const {max} = model
-    const {min} = model
-    if(action === 'Add City'){
-        return inquirer.prompt([
-            {
-                name: 'addCity',
-                type: 'input',
-                message: 'Location?'
-            }
-        ])
-    }
-    
-    if(action === 'Update City'){
-        return inquirer.prompt([
-            {
-                name: 'updateCity',
-                type: 'list',
-                message: 'Update City',
-                choices: cities
-            }
-        ])
-    }
-
-    if(action === 'Delete City'){
-        return inquirer.prompt([
-            {
-                name: 'deleteCity',
-                type: 'list',
-                message: 'Delete City:',
-                choices: cities
-            }
-        ])
-    }
-}
 function NameCity (){
     return inquirer.prompt([
         {
@@ -125,7 +88,6 @@ function view(model){
 module.exports = {
     view,
     inputAction,
-    inputAnswer,
     NameCity,
     SelectCity
 }

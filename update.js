@@ -9,7 +9,6 @@ async function API (city){
 }
 
 async function ModelUpdate(model,option){
-    
 
     if (option=='Add city'){
         const CN= await NameCity()
@@ -60,22 +59,12 @@ async function ModelUpdate(model,option){
 
                 }
             }
-            
+
         return newModel
     } 
-    
-    
-    else{
-        console.log(option," :option")
-    }
 }
 
-
-
-
-
-module.exports = {
-    
+module.exports = {  
     ModelUpdate
 }
 

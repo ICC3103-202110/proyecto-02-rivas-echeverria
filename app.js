@@ -14,7 +14,6 @@ async function app(state, ModelUpdate, view){
         else{printTable(table)}
         
         const action = await inputAction(model)
-        //const answer = await inputAnswer(action['action'], model)
         const UpdatedModel=await ModelUpdate(model,action['action'])
         state={
             ...state,
