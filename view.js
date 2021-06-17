@@ -95,12 +95,15 @@ function NameCity (){
             name: 'nameCity',
             type: 'input',
             message: 'Name of the city: '
-            
-            
-}])}
+        }
+    ])
+}
 
-function SelectCity (){
-    const {cities}=model
+function SelectCity (model){
+    const cities=[]
+    for (var l=0;l < Object.keys(model).length ;l++){
+        cities.push(model[l].cities)
+    }
     return inquirer.prompt([
         {
             name: 'selectCity',
@@ -108,8 +111,9 @@ function SelectCity (){
             message: 'Update city: ',
             choices: cities
             
-            
-}])}
+        }
+    ])
+}
 
 function view(model){
     return {

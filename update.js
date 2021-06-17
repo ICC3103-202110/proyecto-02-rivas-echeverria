@@ -18,40 +18,39 @@ async function ModelUpdate(model,option){
 
     if (option=='Add city'){
         const CN= await NameCity()
-        const data= API(CN['nameCity'])
-        const datat= data.then(value =>{
+        const data= await API(CN['nameCity'])
 
-            const cities2= value[0]
-            const temp2=value[1] 
-            const max2= value[2]
-            const min2= value[3]
+
+        const cities2= data[0]
+        const temp2=data[1] 
+        const max2= data[2]
+        const min2= data[3]
             
-            const NewData={cities:cities2 ,temp:temp2 ,max:max2 ,min:min2}
-            model.push(NewData)
+        const NewData={cities:cities2 ,temp:temp2 ,max:max2 ,min:min2}
+        model.push(NewData)
         
-            return model        
-    })
+        return model        
+    
     }
     if (option=='Update City'){
-        const CN=await SelectCity()
-        const data =API(CN['selectCity'])
-        const datat=data.then(value =>{
-            const cities2= value[0]
-            const temp2= value[1]
-            const max2= value[2]
-            const min2= value[3]
-            for (var l=0; l < Object.keys(model).length; l++){
-                if (model[l].cities==cities2){
-                    return {
-                    ...model[l],
-                    cities:cities2 , 
-                    temp: temp2,
-                    max: max2 ,
-                    min: min2 
+        console.log('Entra a update')
+        const CN=await SelectCity(model)
+        const data =await API(CN['selectCity'])
+        const cities2= data[0]
+        const temp2= data[1]
+        const max2= data[2]
+        const min2= data[3]
+        for (var l=0; l < Object.keys(model).length; l++){
+            if (model[l].cities==cities2){
+                return {
+                ...model[l],
+                cities:cities2 , 
+                temp: temp2,
+                max: max2 ,
+                min: min2 
                     }
                 }
             }
-        })
     }
              
             
