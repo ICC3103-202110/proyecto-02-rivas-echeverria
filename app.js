@@ -8,7 +8,10 @@ async function app(state, ModelUpdate, view){
         console.clear()
         
         console.log(tittle)
-        printTable(table)
+        if (Object.keys(model).length==0){
+            console.log('NO CITIES')
+        }
+        else{printTable(table)}
         
         const action = await inputAction(model)
         //const answer = await inputAnswer(action['action'], model)
