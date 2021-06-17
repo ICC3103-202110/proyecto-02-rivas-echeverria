@@ -41,14 +41,14 @@ async function ModelUpdate(model,option){
         const max2= data[2]
         const min2= data[3]
         for (var l=0; l < Object.keys(model).length; l++){
+            console.log('entra a for')
             if (model[l].cities==cities2){
-                return {
-                ...model[l],
-                cities:cities2 , 
-                temp: temp2,
-                max: max2 ,
-                min: min2 
-                    }
+                console.log('entra a if')
+                model[l].cities = cities2
+                model[l].temp = temp2
+                model[l].max = max2
+                model[l].min = min2
+                return model
                 }
             }
     }
