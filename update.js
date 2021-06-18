@@ -3,10 +3,22 @@ const axios= require("axios")
 
 async function API (city){
     const url=`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8454e5211589480a174e7488a24c7fcf&units=metric`
-    const weather = await axios.get(url)
-
-    return [city,weather.data.main.temp,weather.data.main.temp_max,weather.data.main.temp_min]
+    try{
+        weather = await axios.get(url)
+    } 
+    catch(error){
+        if (error){
+            console.log('  invalid city, put a valid city:','\n')
+            const CN= await NameCity()
+            const data= await API(CN['nameCity'])
+            city = data[0]
+            return data
+        }
+    }
+    finally{
+        return [city,weather.data.main.temp,weather.data.main.temp_max,weather.data.main.temp_min]
 }
+}  
 
 async function ModelUpdate(model,option){
 
